@@ -4,12 +4,14 @@ require('dotenv').config()
 const PORT = process.env.PORT || 3000
 const authRouter = require('./routes/auth')
 const profileRouter = require('./routes/profile')
+const PollRouter = require('./routes/Poll')
 
 const app = express()
 
 app.use(express.json())
 app.use(authRouter)
 app.use(profileRouter)
+app.use(PollRouter)
 
 mongoose.connect(process.env.DB)
 .then(()=>{
