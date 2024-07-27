@@ -13,18 +13,18 @@ const YesNoPollSchema = mongoose.Schema({
         type : String,
         required : true,
     },
+    type : {
+        type : String,
+        required : true
+    },
     yesvotes : [
         {
-            voterid : {
-                type : String,
-            }
+            type : String
         }
     ],
     novotes : [
         {
-            voterid : {
-                type : String
-            }
+            type : String
         }
     ]
 })

@@ -17,6 +17,10 @@ const commentPollSchema = mongoose.Schema({
         type : String,
         required : true,
     },
+    type : {
+        type : String,
+        required : true
+    },
     comments : [
         {
             voterid : {
