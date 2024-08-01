@@ -7,6 +7,7 @@ const profileRouter = require('./routes/profile')
 const PollRouter = require('./routes/Poll')
 const getPollRouter = require('./routes/getpolls');
 const userRouter = require('./routes/user')
+const votesRouter = require('./routes/votes')
 
 const app = express()
 
@@ -16,6 +17,7 @@ app.use(profileRouter)
 app.use(PollRouter)
 app.use(getPollRouter)
 app.use(userRouter)
+app.use(votesRouter)
 
 mongoose.connect(process.env.DB)
 .then(()=>{

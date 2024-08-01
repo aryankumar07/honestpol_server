@@ -19,10 +19,10 @@ PollRouter.post('/user/add-comment-poll',auth,async(req,res,next)=>{
             color,
             type : "comment",
         })
-        commentpoll.comments.push({
-            voterid : "123",
-            comment : "this is the comment added"
-        })
+        // commentpoll.comments.push({
+        //     voterid : "123",
+        //     comment : "this is the comment added"
+        // })
         commentpoll = await commentpoll.save();
         let user = await User.findById(userid)
         const postid = commentpoll['_id'].toString()
