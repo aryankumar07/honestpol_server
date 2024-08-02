@@ -32,6 +32,11 @@ const commentPollSchema = mongoose.Schema({
                 // required : true,
             }
         }
+    ],
+    likes : [
+        {
+            type : String
+        }
     ]
 })
 

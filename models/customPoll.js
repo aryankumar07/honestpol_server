@@ -47,6 +47,11 @@ const customPollSchema = mongoose.Schema({
                 // required : true,
             }
         }
+    ],
+    likes : [
+        {
+            type : String
+        }
     ]
 })
 

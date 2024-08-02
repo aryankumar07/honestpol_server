@@ -26,6 +26,11 @@ const YesNoPollSchema = mongoose.Schema({
         {
             type : String
         }
+    ],
+    likes : [
+        {
+            type : String
+        }
     ]
 })
 

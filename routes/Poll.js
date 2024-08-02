@@ -85,6 +85,58 @@ PollRouter.post('/user/add-custom-poll',auth,async(req,res,next)=>{
     }
 })
 
+PollRouter.post('/poll/inc-likes',auth,async(req,res,next)=>{
+    try{
+        const { pollid,type } = req.body
+        let poll=null;
+        if(type == "comment"){
+            poll = await CommentPoll.findById(pollid)
+        }else if(type == "yn"){
+            poll = await YesNoPoll.findById(pollid)
+        }else if(type == "Selection"){
+            poll = await CustomPoll.findById(pollid)
+        }
+        poll.likes.push(req.user)
+        let count = poll.likes.length;
+        await poll.save()
+        return res.status(200).json({
+            count : count
+        })
+    }catch(e){
+        return res.status(500).json({
+            error : e.message
+        })
+    }
+})
+
+PollRouter.post('/poll/dec-likes',auth,async(req,res,next)=>{
+    try{
+        const { pollid,type } = req.body
+        let poll=null;
+        if(type == "comment"){
+            poll = await CommentPoll.findById(pollid)
+        }else if(type == "yn"){
+            poll = await YesNoPoll.findById(pollid)
+        }else if(type == "Selection"){
+            poll = await CustomPoll.findById(pollid)
+        }
+
+        let index = poll.likes.indexOf(req.user)
+        if(index>-1){
+            poll.likes.splice(index,1)
+        }
+        let count = poll.likes.length;
+        await poll.save()
+        return res.status(200).json({
+            count : count
+        })
+    }catch(e){
+        return res.status(500).json({
+            error : e.message
+        })
+    }
+})
+
 
 
 
