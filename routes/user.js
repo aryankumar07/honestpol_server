@@ -19,6 +19,18 @@ userRouter.get('/home/get_user',async(req,res,next)=>{
     }
 })
 
+userRouter.get('/home/all_user',async(req,res,next)=>{
+    try{
+        const users = await User.find()
+        // console.log(users)
+        res.status(200).json(users)
+    }catch(e){
+        return res.status(500).json({
+            error : e.message
+        })
+    }
+})
+
 userRouter.get('/user/liked',auth,async(req,res,next)=>{
     try{
         const userid = req.user
